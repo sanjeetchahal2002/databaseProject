@@ -1,0 +1,21 @@
+{
+  "name": "database-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "xmlToJson.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "json-2-csv": "^4.1.0",
+    "json2csv": "^6.0.0-alpha.2",
+    "pg": "^8.11.3",
+    "ps": "^1.0.0",
+    "xml-js": "^1.6.11",
+    "xml2js": "^0.6.2",
+    "xml2json": "^0.12.0"
+  }
+}
