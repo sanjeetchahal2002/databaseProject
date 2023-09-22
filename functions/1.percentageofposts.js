@@ -11,12 +11,14 @@ const client = new Client({
 client.connect()
 .then(() => console.log('Connected Succesfully'))
 .then(async () =>{
-    const postGreaterThanOne = await client.query(`select COUNT(*) from posts where posttypeid = 1 AND answercount >=1;`)
-    const postLessThanOne = await client.query('select COUNT(*) from posts where posttypeid = 1;')
-    console.log((Number(postGreaterThanOne.rows[0].count)/Number(postLessThanOne.rows[0].count))*100)
+    return client.query(`SELECT 
+    ((COUNT(*) FILTER (WHERE posttypeid = 1 AND answercount >= 1) * 100) /
+        COUNT(*) FILTER (WHERE posttypeid = 1 )) AS percentage
+        FROM posts;
+    `)
 })
 .then ((result) => {
-    console.log(result.rows)
+    console.log(result.rows[0].percentage)
 })
 .catch(error => console.log(error))
 .finally(() => client.end())

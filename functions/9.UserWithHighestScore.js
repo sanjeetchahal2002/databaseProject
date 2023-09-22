@@ -12,7 +12,7 @@ client.connect()
 .then(() => console.log('Connected Succesfully'))
 .then(()=>{
     return client.query(`
-    SELECT id, (upvotes + downvotes+p.yo*10+c.comment_count*3)AS score 
+    SELECT id,displayname, (upvotes + downvotes+p.yo*10+c.comment_count*3)AS score 
     FROM users u 
     INNER JOIN   
     (SELECT  Count(owneruserid) AS yo,owneruserid
